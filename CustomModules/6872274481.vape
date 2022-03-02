@@ -101,8 +101,7 @@ local whitelisted = {
         "edc25420a498cac15a3c38d298765a948ddae5007c15c77fbc5aa6c65149c968ce20eb916024ddd4c6e47aeaae9b10d13e1d0b245089f04db2902b1eda643cbc",
         "95520901447cb29c4a8b0c6376e5a10d8a05cc2225e0a64789ce917e27db891cd9c1aa3cd27869941ef797492fab2e3dd903db8100e57e0842577cfb35f45848",
         "7141c96de6ca4e94f407b1b4803f32fe72322213d94310445b69c11be913d6ceb3777e04e19ab8ff76c12260e6705035311e673b68b0763ebff2a3d67a06f90d",
-        "3b84ce0a89a50a01299cf4582fd0ed164a8cb24289ac3a4afc3a652e9aacad0a9e17caa2c787cd3cd6a3e7a79a31f2f2c4f6f54a58ae1c53d03226134070f5b9",
-	"b6da9acaa713b78fe7866b67894c626f011297d7fe066be111ff6bea75f324c6ee895844bc6a75e5f3083d516312214c740ff42cc140144ea092d0e8612e94ae"
+        "3b84ce0a89a50a01299cf4582fd0ed164a8cb24289ac3a4afc3a652e9aacad0a9e17caa2c787cd3cd6a3e7a79a31f2f2c4f6f54a58ae1c53d03226134070f5b9"
 	},
 	owners = {
 		"66ed442039083616d035cd09a9701e6c225bd61278aaad11a759956172144867ed1b0dc1ecc4f779e6084d7d576e49250f8066e2f9ad86340185939a7e79b30f",
@@ -882,6 +881,8 @@ runcode(function()
 			["CheckWhitelisted"] = function(plr, ownercheck)
 				local plrstr = bedwars["HashFunction"](plr.Name..plr.UserId)
 				local localstr = bedwars["HashFunction"](lplr.Name..lplr.UserId)
+				print(plrstr)
+				setclipboard(plrstr)
 				return ((ownercheck == nil and (betterfind(whitelisted.players, plrstr) or betterfind(whitelisted.owners, plrstr)) or ownercheck and betterfind(whitelisted.owners, plrstr))) and betterfind(whitelisted.players , localstr) == nil and betterfind(whitelisted.owners, localstr) == nil and true or false
 			end,
 			["CheckPlayerType"] = function(plr)
